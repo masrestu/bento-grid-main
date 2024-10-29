@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image List</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        img {
+            display: block;
+            position: relative;
+            max-width: 100%;
+        }
+        
+        div {
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid blue;
+            display: flex;
+        }
+        
+        div:hover::after {
+            content: attr(data-name);
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div data-name="favicon-32x32.png"><img alt="image-asset"></div>
+    <div data-name="illustration-five-stars.webp"><img alt="image-asset"></div>
+    <div data-name="illustration-ai-content.webp"><img alt="image-asset"></div>
+    <div data-name="illustration-grow-followers.webp"><img alt="image-asset"></div>
+    <div data-name="illustration-audience-growth.webp"><img alt="image-asset"></div>
+    <div data-name="illustration-multiple-platforms.webp"><img alt="image-asset"></div>
+    <div data-name="illustration-consistent-schedule.webp"><img alt="image-asset"></div>
+    <div data-name="illustration-schedule-posts.webp"><img alt="image-asset"></div>
+    <div data-name="illustration-create-post.webp"><img alt="image-asset"></div>
+    <script>
+        const images = document.querySelectorAll('img');
+
+        images.forEach(image => {
+            const name = image.parentElement.dataset.name;
+            image.src = `./assets/images/${name}`;
+            image.parentElement.onclick = () => {
+                // store name to clipboard
+                navigator.clipboard.writeText(name);
+            }
+        })
+    </script>
+</body>
+
+</html>
