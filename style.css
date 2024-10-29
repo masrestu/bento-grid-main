@@ -137,6 +137,7 @@ body {
 .block-audience {
     display: grid;
     row-gap: var(--fs-400);
+    grid-row: 6 / 7;
 }
 
 .block-audience > img {
